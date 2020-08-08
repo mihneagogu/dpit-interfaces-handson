@@ -18,7 +18,7 @@ public interface IStringList {
     // Returneaza indicele din lista unde se afla `item`, iar daca nu exista, returneaza -1
     int indexOf(String item);
 
-    // Returneaza cate elementu sunt in lista
+    // Returneaza cate elemente sunt in lista
     int size();
 
     /* Asta se numeste o metoda `default` pentru interfate, nu apare in curs pentru ca nu avem timp
