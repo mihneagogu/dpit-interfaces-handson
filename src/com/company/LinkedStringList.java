@@ -2,7 +2,14 @@ package com.company;
 
 import java.util.LinkedList;
 
-// Hacky implementation of IStringList using an already-implemented LinkedList, just for testing purposes
+// Nu e o implementare `adevarata` a unui LinkedList, folosesc de fapt LinkedList-ul din java.util,
+// dar clasa asta e folosita doar ca sa va arat in Main.java cum se foloseste interfata in relatie cu clasa
+// Cand scriem
+// "IStringList list = new LinkedStringList();"
+// e foarte similar cu
+// "List<String> list = new LinkedList();"
+// Acelasi lucru se intampla: tipul aparent al variabilei este interfata List<String>, respectiv IStringList
+// iar tipul adevarat care implementeaza interfata este LinkedList<String>, respectiv LinkedStringList
 public class LinkedStringList implements IStringList{
     LinkedList<String> internalList = new LinkedList<>();
 
@@ -34,15 +41,12 @@ public class LinkedStringList implements IStringList{
 
     @Override
     public String toString() {
-        String res = "[";
-        int size = internalList.size();
-        for (int i = 0; i < size - 1; i++){
-           res += internalList.get(i) + ", ";
-        }
-        if (size > 0)  {
-            res += internalList.get(size - 1);
-        }
-        res += "]";
-        return res;
+        return asString();
+
+    }
+
+    @Override
+    public int size() {
+        return internalList.size();
     }
 }

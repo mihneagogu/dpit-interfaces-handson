@@ -2,19 +2,43 @@ package com.company;
 
 public interface IStringList {
     // !!!!!!!!
-    // Use .equals to compare between strings
+    // Folositi metoda .equals din String ca sa comparati Stringuri intre ele
     // !!!!!!!!
 
-    // Adds the given string to the list
+    // Adauga `item` la lista
     void add(String item);
 
-    // Gets the item at index
-    // or returns null if the index is invalid
+    // Returneaza elementul la indicele cerut
+    // sau `null` daca nu exista
     String get(int index);
 
-    // Returns whether the list contains the item
+    // Returneaza daca exista elementul `item` in lista
     boolean contains(String item);
 
-    // Returns the index of the given item or -1 if it is not in there
+    // Returneaza indicele din lista unde se afla `item`, iar daca nu exista, returneaza -1
     int indexOf(String item);
+
+    // Returneaza cate elementu sunt in lista
+    int size();
+
+    /* Asta se numeste o metoda `default` pentru interfate, nu apare in curs pentru ca nu avem timp
+    sa acoperim si metodele default, dar explic aici si cititi voi singuri.
+    metoda asta e folosita pur pentru a apela metoda toString() si formateaza lista frumos.
+    Unde vedeti `this`, este vorba de clasa care implementeaza interfata. Asadar se poate apela metoda asta
+    de formatare pentru orice clasa (* sau interfata) care implementeaza IStringList
+
+    Daca nu va dati exact seama ce face, folositi debugger-ul sa vedeti cum se apeleaza
+     */
+    default String asString() {
+        String res = "[";
+        int size = this.size();
+        for (int i = 0; i < size - 1; i++){
+            res += this.get(i).toString() + ", ";
+        }
+        if (size > 0)  {
+            res += this.get(size - 1).toString();
+        }
+        res += "]";
+        return res;
+    }
 }
